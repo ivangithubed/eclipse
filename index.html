@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+
+  <title>Сонячне затемнення 2026 — Україна</title>
+
+  <meta
+    name="description"
+    content="Інтерактивна анімація часткового сонячного затемнення 12 серпня 2026 року для західних і центральних міст України."
+  />
+
+  <meta
+    name="keywords"
+    content="сонячне затемнення, затемнення 2026, Україна, анімація, Canvas, JavaScript"
+  />
+
+  <meta name="author" content="Навчаємося Разом" />
+  <meta name="robots" content="index, follow" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#07101f" />
+  <meta name="application-name" content="Затемнення 2026" />
+
+  <!-- Адреса основної версії сторінки -->
+  <link
+    rel="canonical"
+    href=""
+  />
+
+
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307101f'/%3E%3Ccircle cx='32' cy='32' r='19' fill='%23ffcc4d'/%3E%3Ccircle cx='40' cy='25' r='19' fill='%2307101f'/%3E%3C/svg%3E"
+  />
+
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  />
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Затемнення 2026"
+  />
+
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="uk_UA" />
+
+  <meta
+    property="og:title"
+    content="Сонячне затемнення 2026 — Україна"
+  />
+
+  <meta
+    property="og:description"
+    content="Порівняйте, як виглядатиме часткове сонячне затемнення 12 серпня 2026 року в різних містах України."
+  />
+
+  <meta
+    property="og:url"
+    content=""
+  />
+
+  <meta property="og:site_name" content="Навчаємося Разом" />
+
+
+  <meta name="twitter:card" content="summary" />
+
+  <meta
+    name="twitter:title"
+    content="Сонячне затемнення 2026 — Україна"
+  />
+
+  <meta
+    name="twitter:description"
+    content="Інтерактивна Canvas-анімація затемнення для західних і центральних міст України."
+  />
+
+  <meta
+  property="og:image"
+  content="./eclipse-preview.jpg"
+/>
+
+<meta
+  property="og:image:width"
+  content="1200"
+/>
+
+<meta
+  property="og:image:height"
+  content="630"
+/>
+
+<meta
+  property="og:image:alt"
+  content="Порівняння сонячного затемнення в містах України"
+/>
+
+<meta
+  name="twitter:card"
+  content="summary_large_image"
+/>
+
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+  <body>
+    <main class="page-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">12 серпня 2026 · захід і центр України</p>
+          <h1>Сонячне затемнення</h1>
+          <p class="lede">
+            Подивіться, як змінюється видима фаза затемнення залежно від міста —
+            безпосередньо перед заходом Сонця.
+          </p>
+        </div>
+        <div class="time-panel" aria-live="polite">
+          <span>Київський час</span><strong id="current-time">20:10</strong
+          ><span id="phase-label">До початку</span>
+        </div>
+      </header>
+      <section class="controls" aria-label="Керування анімацією">
+        <button
+          id="play-button"
+          class="play-button"
+          type="button"
+          aria-label="Відтворити анімацію"
+        >
+          <span id="play-icon" aria-hidden="true">▶</span
+          ><span id="play-text">Відтворити</span>
+        </button>
+        <label class="timeline-label" for="timeline"
+          ><span>20:10</span
+          ><input
+            id="timeline"
+            type="range"
+            min="0"
+            max="44"
+            value="0"
+            step="0.05"
+          /><span>20:54</span></label
+        >
+        <button id="restart-button" class="icon-button" type="button">
+          Почати спочатку
+        </button>
+      </section>
+      <section aria-labelledby="cities-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Порівняння міст</p>
+            <h2 id="cities-heading">Один момент — різне небо</h2>
+          </div>
+          <div class="legend" aria-label="Умовні позначення">
+            <span><i class="legend-sun"></i> Сонце</span
+            ><span><i class="legend-moon"></i> Місяць</span
+            ><span><i class="legend-horizon"></i> Горизонт</span>
+          </div>
+        </div>
+        <div id="cities-grid" class="cities-grid"></div>
+      </section>
+      <aside class="safety" aria-labelledby="safety-title">
+        <div class="safety-icon" aria-hidden="true">◉</div>
+        <div>
+          <h2 id="safety-title">Спостерігайте безпечно</h2>
+          <p>
+            Не дивіться на Сонце без сертифікованих окулярів ISO 12312-2.
+            Звичайні сонцезахисні окуляри та камера без спеціального сонячного
+            фільтра не захищають очі.
+          </p>
+        </div>
+      </aside>
+      <footer>
+        <p>
+          Час і відсоток покриття: Timeanddate. Візуалізація є навчальною
+          моделлю; місцевий рельєф і атмосферна рефракція можуть змінити
+          фактичний момент заходу.
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
