@@ -340,3 +340,119 @@ footer {
     scroll-behavior: auto !important;
   }
 }
+.project-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  margin-top: 34px;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background:
+    radial-gradient(
+      circle at 100% 0,
+      rgba(255, 203, 102, 0.12),
+      transparent 22rem
+    ),
+    rgba(13, 24, 43, 0.8);
+}
+
+.project-links__content {
+  max-width: 680px;
+}
+
+.project-links h2 {
+  max-width: 620px;
+  font-size: clamp(1.65rem, 3vw, 2.6rem);
+}
+
+.project-links__description {
+  max-width: 620px;
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.project-links__actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 12px;
+}
+
+.project-link {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 18px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  font-weight: 750;
+  text-decoration: none;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.project-link--primary {
+  color: #1b170f;
+  background: var(--accent);
+}
+
+.project-link--primary:hover {
+  background: #ffda8a;
+  transform: translateY(-2px);
+}
+
+.project-link--secondary {
+  border-color: var(--line);
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.project-link--secondary:hover {
+  border-color: rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.11);
+  transform: translateY(-2px);
+}
+
+.project-link:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .project-links {
+    align-items: stretch;
+    flex-direction: column;
+    padding: 26px;
+  }
+
+  .project-links__actions {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 500px) {
+  .project-links__actions {
+    flex-direction: column;
+  }
+
+  .project-link {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-link {
+    transition: none;
+  }
+
+  .project-link:hover {
+    transform: none;
+  }
+}
