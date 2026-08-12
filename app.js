@@ -258,7 +258,7 @@ function render() {
   const minute = startMinute + currentOffset;
   timeOutput.textContent = formatMinute(minute);
   timeline.value = String(currentOffset);
-  if (minute < 1214) phaseLabel.textContent = "До початку";
+  if (minute < 1214) phaseLabel.textContent = "Стартова фаза на заході";
   else if (minute < 1222) phaseLabel.textContent = "Початок у центрі України";
   else if (minute < 1244) phaseLabel.textContent = "Затемнення над Україною";
   else phaseLabel.textContent = "Фінальна фаза на заході";
